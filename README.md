@@ -1,6 +1,6 @@
 This repository will have projects on Software Testing Automation.
 
-### Prerequisites to Run a Playwright File
+### Prerequisites to Run a Playwright File (JavaScript in VS Code)
 
 1. **Install Node.js**
    - Ensure you have Node.js installed on your machine. You can download it from [Node.js Official Website](https://nodejs.org/).
@@ -10,60 +10,46 @@ This repository will have projects on Software Testing Automation.
      npm -v
      ```
 
-2. **Initialize a Node.js Project**
-   - Create a new project or navigate to an existing one. Run:
+2. **Set Up a New Playwright Project**
+   - Run the following command to initialize a Playwright project:
      ```bash
-     npm init -y
+     npm init playwright@latest
      ```
-   - This will create a `package.json` file.
+   - Follow the prompts during the setup:
+     - Choose **JavaScript** as your language (or TypeScript if preferred).
+     - Specify the name of your tests folder (default is `tests` or `e2e` if a `tests` folder already exists).
+     - Optionally, add a **GitHub Actions workflow** for CI/CD integration.
+     - Install Playwright browsers (default is **true**).
 
-3. **Install Playwright Test Runner**
-   - Install Playwright's test runner as a development dependency:
+3. **Open the Project in VS Code**
+   - If you are using Visual Studio Code, open the project folder:
      ```bash
-     npm install -D @playwright/test
+     code .
      ```
 
-4. **Install Browser Dependencies**
-   - Playwright may require browser dependencies. Use the following command to install them:
-     ```bash
-     npx playwright install-deps
-     ```
-   - This is particularly necessary for Linux systems.
-
-5. **Set Up a Playwright Configuration (Optional)**
-   - You can generate a configuration file using:
-     ```bash
-     npx playwright init
-     ```
-   - This will create a `playwright.config.ts` file to manage test settings.
-
-6. **Write a Playwright Test File**
-   - Create a test file, e.g., `example.spec.js`:
-     ```javascript
-     const { test, expect } = require('@playwright/test');
-
-     test('basic test', async ({ page }) => {
-         await page.goto('https://example.com');
-         const title = await page.title();
-         expect(title).toBe('Example Domain');
-     });
-     ```
-
-7. **Run the Test**
-   - Run your test file using:
+4. **Run a Playwright Test**
+   - To ensure everything is set up correctly, run the Playwright example tests:
      ```bash
      npx playwright test
      ```
-   - Or, if you're not using the test runner:
+
+5. **(Optional) Install Browser Dependencies**
+   - If you're running Playwright on a Linux environment, install browser dependencies:
      ```bash
-     node example.spec.js
+     npx playwright install-deps
      ```
 
-8. **(Optional) Install Additional Libraries**
-   - Depending on your requirements, you may need libraries like:
-     - `dotenv` for managing environment variables.
-     - `jest` or `mocha` for custom test runners.
+6. **Write Your Own Tests**
+   - Create a test file in the `tests` folder (e.g., `example.spec.js`) and write your test cases using the Playwright testing library.
+
+7. **Run Your Custom Tests**
+   - Execute tests using:
+     ```bash
+     npx playwright test
+     ```
 
 ---
 
-Let me know if you need further assistance in setting up or running Playwright!
+This streamlined process with `npm init playwright@latest` makes it easy to set up and run Playwright tests in a JavaScript project. Let me know if you need further assistance!
+
+  
