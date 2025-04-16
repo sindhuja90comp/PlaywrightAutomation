@@ -50,6 +50,4 @@ This repository will have projects on Software Testing Automation.
 
 ---
 
-This streamlined process with `npm init playwright@latest` makes it easy to set up and run Playwright tests in a JavaScript project. Let me know if you need further assistance!
-
-  
+This streamlined process with `npm init playwright@latest` makes it easy to set up and run Playwright tests in a JavaScript project.
