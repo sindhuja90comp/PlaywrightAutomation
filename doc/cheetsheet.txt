@@ -1,0 +1,70 @@
+//button
+await page.locator('button:has-text("Click Me")').click();   //click button with text - useful when id changes randomly
+await page.locator('text="Click Me"').click();               //locator has text
+radio button
+text box
+//checkbox
+await page.getByRole('checkbox', { name: 'Subscribe' }).check();
+
+
+
+Upload files
+You can select input files for upload using the locator.setInputFiles() method. It expects first argument to point to an input element with the type "file". Multiple files can be passed in the array. If some of the file paths are relative, they are resolved relative to the current working directory. Empty array clears the selected files.
+
+// Select one file
+await page.getByLabel('Upload file').setInputFiles(path.join(__dirname, 'myfile.pdf'));
+
+// Select multiple files
+await page.getByLabel('Upload files').setInputFiles([
+  path.join(__dirname, 'file1.txt'),
+  path.join(__dirname, 'file2.txt'),
+]);
+
+// Select a directory
+await page.getByLabel('Upload directory').setInputFiles(path.join(__dirname, 'mydir'));
+
+// Remove all the selected files
+await page.getByLabel('Upload file').setInputFiles([]);
+
+// Upload buffer from memory
+await page.getByLabel('Upload file').setInputFiles({
+  name: 'file.txt',
+  mimeType: 'text/plain',
+  buffer: Buffer.from('this is test')
+});
+
+If you don't have input element in hand (it is created dynamically), you can handle the page.on('filechooser') event or use a corresponding waiting method upon your action:
+
+// Start waiting for file chooser before clicking. Note no await.
+const fileChooserPromise = page.waitForEvent('filechooser');
+await page.getByLabel('Upload file').click();
+const fileChooser = await fileChooserPromise;
+await fileChooser.setFiles(path.join(__dirname, 'myfile.pdf'));
+
+
+
+Select options
+Selects one or multiple options in the <select> element with locator.selectOption(). You can specify option value, or label to select. Multiple options can be selected.
+
+// Single selection matching the value or label
+await page.getByLabel('Choose a color').selectOption('blue');
+
+// Single selection matching the label
+await page.getByLabel('Choose a color').selectOption({ label: 'Blue' });
+
+// Multiple selected items
+await page.getByLabel('Choose multiple colors').selectOption(['red', 'green', 'blue']);
+
+cli commands:
+npx playwright test test/demoqa/forms.test.js --project=chromium --headed
+
+
+Keys and shortcuts
+// Hit Enter
+await page.getByText('Submit').press('Enter');
+
+// Dispatch Control+Right
+await page.getByRole('textbox').press('Control+ArrowRight');
+
+// Press $ sign on keyboard
+await page.getByRole('textbox').press('$');
