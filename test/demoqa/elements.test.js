@@ -101,7 +101,7 @@ test.describe("elements", () => {
 
 
     //test links functionality
-    test.only("links test", async ({ page }) => {
+    test("links test", async ({ page }) => {
         await page.goto('https://demoqa.com/links');
 
         const [newPage1] = await Promise.all([ 
