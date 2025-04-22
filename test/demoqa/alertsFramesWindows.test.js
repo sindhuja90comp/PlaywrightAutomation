@@ -5,7 +5,7 @@ test("browser test", async({page})=>{
 
 })
 
-test.only("alerts test", async({page})=>{
+test("alerts test", async({page})=>{
     await page.goto('https://demoqa.com/alerts');
     await page.locator('#alertButton').click();
     //await page.press('Escape');
