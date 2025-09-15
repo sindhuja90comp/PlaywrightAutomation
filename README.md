@@ -31,9 +31,3 @@ This repository contains projects focused on Software Testing Automation using P
 - Playwright
 - JavaScript
 - HTML
-
-## Contributing
-Contributions and suggestions are welcome! Please open an issue or submit a pull request for any improvements or new features.
-
-## License
-This project is licensed under the MIT License.
